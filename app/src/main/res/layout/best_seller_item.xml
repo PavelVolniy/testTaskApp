@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:paddingEnd="11dp">
+
+  <ImageView
+    android:id="@+id/iv_best_seller_im_item"
+    android:layout_width="187dp"
+    android:layout_height="168dp"
+    android:background="@color/baseWhite"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <include
+    layout="@layout/like_background_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="15dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tv_price_with_sale"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="21dp"
+    android:layout_marginBottom="33dp"
+    android:fontFamily="@font/mark_pro_bolt"
+    android:text="$1,047"
+    android:textAlignment="center"
+    android:textColor="@color/colorPrimary"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+    android:id="@+id/tv_price_without_sale"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="7dp"
+    android:layout_marginBottom="34dp"
+    android:fontFamily="@font/markpro_medium"
+    android:text="$1,500"
+    android:textAlignment="center"
+    android:textColor="#cccccc"
+    android:textSize="10sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/tv_price_with_sale" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:fontFamily="@font/markpro_regular"
+    android:text="Samsung Galaxy s20 Ultra"
+    android:textAlignment="textStart"
+    android:textColor="@color/colorPrimary"
+    android:textSize="10sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/tv_price_with_sale" />
+</androidx.constraintlayout.widget.ConstraintLayout>

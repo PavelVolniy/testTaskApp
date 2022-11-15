@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestTaskApp</string>
+    <string name="splash_text">Ecommerce \nConcept</string>
+    <string name="names_city">Aksay, Rostov na Donu</string>
+  <string name="select_category">Select Category</string>
+  <string name="view_all">view all</string>
+  <string name="hot_sales">Hot sales</string>
+  <string name="see_more">see more</string>
 </resources>
