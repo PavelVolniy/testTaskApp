@@ -12,8 +12,9 @@
   <color name="colorPrimary">#010035</color>
   <color name="colorPrimaryDark">#FF000000</color>
   <color name="colorAccent">#FF6E4E</color>
-  <color name="backgroundApp">#F5F5F5</color>
+  <color name="bg_app">#F5F5F5</color>
   <color name="categoryTitleText">@color/baseBlack</color>
   <color name="select_category_ic_color">#B3B3C3</color>
-  <color name="background_hot_sales">#101010</color>
+  <color name="bg_hot_sales">#101010</color>
+  <color name="bg_hot_sales_rectangle">#C4C4C4</color>
 </resources>

@@ -14,7 +14,7 @@
         android:gravity="left"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:background="@drawable/background_text_splash"
+        android:background="@drawable/bg_text_splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

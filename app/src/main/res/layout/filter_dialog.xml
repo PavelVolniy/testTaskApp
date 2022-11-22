@@ -3,7 +3,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/backgroundApp">
+  android:background="@color/bg_app">
 
   <TextView
     android:id="@+id/textView"
@@ -33,7 +33,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="24dp"
     android:layout_marginEnd="20dp"
-    android:background="@drawable/bacground_done_button_filter"
+    android:background="@drawable/bg_done_button_filter"
     android:fontFamily="@font/markpro_medium"
     android:paddingStart="21dp"
     android:paddingTop="7dp"
@@ -71,7 +71,7 @@
       android:id="@+id/et_brand_field"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@drawable/background_fields_filter"
+      android:background="@drawable/bg_fields_filter"
       android:inputType="none"
       app:simpleItems="@array/items" />
   </com.google.android.material.textfield.TextInputLayout>
@@ -101,7 +101,7 @@
       android:id="@+id/et_price_field"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@drawable/background_fields_filter"
+      android:background="@drawable/bg_fields_filter"
       android:inputType="none"
       app:simpleItems="@array/items" />
   </com.google.android.material.textfield.TextInputLayout>
@@ -131,7 +131,7 @@
       android:id="@+id/et_size_field"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@drawable/background_fields_filter"
+      android:background="@drawable/bg_fields_filter"
       android:inputType="none"
       app:simpleItems="@array/items" />
   </com.google.android.material.textfield.TextInputLayout>

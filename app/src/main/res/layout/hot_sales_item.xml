@@ -1,58 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_width="384dp"
-  android:layout_height="221dp"
-  android:background="@color/background_hot_sales">
+  >
 
-  <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="32dp" />
+  <data>
 
-  <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_marginStart="32dp"
-    android:orientation="vertical"
-    app:layout_constraintLeft_toLeftOf="parent">
+    <variable
+      name="title"
+      type="String" />
+  </data>
 
-    <FrameLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginStart="20dp"
+    android:layout_width="378dp"
+    android:layout_height="182dp"
+    android:background="@drawable/bg_rectangl_10dp_radius"
+    android:backgroundTint="@color/bg_hot_sales"
+    android:padding="10dp"
+    >
 
-      <include layout="@layout/icon_new_hot_sales" />
-    </FrameLayout>
+    <ImageView
+      android:id="@+id/iv_hot_sales_image"
+      android:layout_width="384dp"
+      android:layout_height="221dp"
+      android:foreground="@drawable/gradient_shape"
+      android:src="@drawable/test_image"
+      android:layout_marginStart="113dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="18dp"
-      android:gravity="start"
-      android:text="Iphone 12"
-      android:textColor="@color/white"
-      android:textSize="25sp" />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="199dp"
+      android:layout_marginStart="32dp"
+      android:orientation="vertical"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="5dp"
-      android:text="Super.Mega.Rapido"
-      android:textColor="@color/white"
-      android:textSize="11sp" />
+      <FrameLayout
+        android:id="@+id/ic_is_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
 
-    <Button
-      android:layout_width="98dp"
-      android:layout_height="33dp"
-      android:layout_marginTop="26dp"
-      android:background="@drawable/background_by_now_button"
-      android:gravity="center"
-      android:paddingStart="25dp"
-      android:paddingEnd="25dp"
-      android:text="Buy now!"
-      android:textColor="@color/black"
-      android:textSize="11sp"
-      android:theme="@style/Theme.Material3.Light"
-      app:backgroundTint="@color/white" />
-  </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/icon_new_hot_sales" />
+      </FrameLayout>
+
+      <TextView
+        android:id="@+id/tv_title_hot_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:gravity="start"
+        android:text="Iphone 12"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+      <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Super.Mega.Rapido"
+        android:textColor="@color/white"
+        android:textSize="11sp" />
+
+      <TextView
+        android:id="@+id/tv_button_by_now"
+        android:layout_width="98dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/bg_by_now_button"
+        android:gravity="center"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="By now!!"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        android:theme="@style/Theme.Material3.Light" />
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
