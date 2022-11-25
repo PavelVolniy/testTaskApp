@@ -1,11 +1,11 @@
 package com.chetv.testtaskapp.ui.main
 
-import com.chetv.testtaskapp.model.base.ListItem
-import com.chetv.testtaskapp.ui.base.BaseDiffUtilItemCallback
+import com.chetv.testtaskapp.model.base.MainScreenListItem
+import com.chetv.testtaskapp.ui.base.BaseDiffUtilItemCallbackMain
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
 class MainScreenVerticalAdapter :
-  AsyncListDifferDelegationAdapter<ListItem>(BaseDiffUtilItemCallback()) {
+  AsyncListDifferDelegationAdapter<MainScreenListItem>(BaseDiffUtilItemCallbackMain()) {
   init {
     delegatesManager.addDelegate(MainScreenDelegate.selectCategoryDelegate())
                     .addDelegate(MainScreenDelegate.hotSalesHorizontalDelegate())

@@ -1,6 +1,6 @@
-package com.chetv.testtaskapp.data.mockyjson
+package com.chetv.testtaskapp.data.mainscreenjson
 
-import com.chetv.testtaskapp.model.base.ListItem
+import com.chetv.testtaskapp.model.base.MainScreenListItem
 
 data class HomeStore(
     val id: Long,
@@ -9,6 +9,6 @@ data class HomeStore(
     val picture: String,
     val subtitle: String,
     val title: String
-): ListItem{
+): MainScreenListItem{
     override val itemID: Long = id
 }

@@ -1,6 +1,6 @@
-package com.chetv.testtaskapp.data.mockyjson
+package com.chetv.testtaskapp.data.mainscreenjson
 
-import com.chetv.testtaskapp.model.base.ListItem
+import com.chetv.testtaskapp.model.base.MainScreenListItem
 
 data class BestSeller(
     val id: Long,
@@ -9,7 +9,7 @@ data class BestSeller(
     val price_without_discount: Int,
     val discount_price: Int,
     val picture: String
-): ListItem{
+): MainScreenListItem{
     override val itemID: Long
         get() = id
 }

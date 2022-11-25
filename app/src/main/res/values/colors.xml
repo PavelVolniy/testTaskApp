@@ -17,4 +17,6 @@
   <color name="select_category_ic_color">#B3B3C3</color>
   <color name="bg_hot_sales">#101010</color>
   <color name="bg_hot_sales_rectangle">#C4C4C4</color>
+  <color name="rating_bar">#FFB800</color>
+  <color name="pd_details">#B7B7B7</color>
 </resources>

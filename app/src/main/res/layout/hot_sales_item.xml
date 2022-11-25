@@ -13,9 +13,9 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_marginStart="20dp"
-    android:layout_width="378dp"
+    android:layout_width="350dp"
     android:layout_height="182dp"
-    android:background="@drawable/bg_rectangl_10dp_radius"
+    android:background="@drawable/bg_rectangle_10dp_radius"
     android:backgroundTint="@color/bg_hot_sales"
     android:padding="10dp"
     >

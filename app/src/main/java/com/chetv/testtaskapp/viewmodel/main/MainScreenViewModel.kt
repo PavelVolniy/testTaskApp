@@ -2,13 +2,13 @@ package com.chetv.testtaskapp.viewmodel.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.chetv.core_network.di.NetworkComponent
+import com.chetv.core_network.api.MockyApi
 import com.chetv.testtaskapp.R
-import com.chetv.testtaskapp.data.mockyjson.BestSeller
-import com.chetv.testtaskapp.data.mockyjson.HomeStore
-import com.chetv.testtaskapp.data.mockyjson.JsonMainScreen
-import com.chetv.testtaskapp.data.mockyjson.JsonMainScreenFromServer
-import com.chetv.testtaskapp.model.base.ListItem
+import com.chetv.testtaskapp.data.mainscreenjson.BestSeller
+import com.chetv.testtaskapp.data.mainscreenjson.HomeStore
+import com.chetv.testtaskapp.data.mainscreenjson.JsonMainScreen
+import com.chetv.testtaskapp.data.mainscreenjson.JsonMainScreenFromServer
+import com.chetv.testtaskapp.model.base.MainScreenListItem
 import com.chetv.testtaskapp.model.test.*
 import com.chetv.testtaskapp.util.ResourceProvider
 import com.chetv.testtaskapp.viewmodel.base.BaseViewModel
@@ -17,13 +17,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainScreenViewModel @Inject constructor(
-  private val resources: ResourceProvider
+  private val resources: ResourceProvider,
+  private val api: MockyApi
 ) : BaseViewModel() {
 
-  private val api = NetworkComponent.createApi()
+//  private val api = NetworkComponent.createApi()
 
-  private val _data = MutableLiveData<List<ListItem>>()
-  val data: MutableLiveData<List<ListItem>> = _data
+  private val _data = MutableLiveData<List<MainScreenListItem>>()
+  val data: MutableLiveData<List<MainScreenListItem>> = _data
 
   init {
     viewModelScope.launch(Dispatchers.IO) {
@@ -33,9 +34,7 @@ class MainScreenViewModel @Inject constructor(
   }
 
 
-
-
-  private suspend fun getItems(): List<ListItem> {
+  private suspend fun getItems(): List<MainScreenListItem> {
     val jsonMainScreen = mappingData(api.mainScreenData())
     //test data
 //    delay(2000L)
@@ -49,8 +48,8 @@ class MainScreenViewModel @Inject constructor(
           SelectCategoryItem(4, false, "Settings", R.drawable.ic_sc_settings)
         )
       ),
-      HotSalesList(jsonMainScreen.home_store),
-      BestSellerList(jsonMainScreen.best_seller)
+      HotSalesList(jsonMainScreen.home_store, resources.string(R.string.hot_sales)),
+      BestSellerList(jsonMainScreen.best_seller, resources.string(R.string.best_seller))
     )
   }
 

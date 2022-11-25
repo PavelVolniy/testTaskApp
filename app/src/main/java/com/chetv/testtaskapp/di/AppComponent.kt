@@ -14,11 +14,12 @@ import javax.inject.Singleton
 interface AppComponent {
   fun resources(): ResourceProvider
 
+
   @Component.Builder
-  interface Builder {
+  abstract  class Builder {
     @BindsInstance
-    fun appContext(context: Context): Builder
-    fun build(): AppComponent
+    abstract fun appContext(context: Context): Builder
+    abstract fun build(): AppComponent
   }
 }
 

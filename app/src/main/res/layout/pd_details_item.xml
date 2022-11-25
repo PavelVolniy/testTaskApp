@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center"
+  android:orientation="horizontal"
+  app:layout_constraintTop_toBottomOf="@id/tl_tab_bar">
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+      android:layout_width="28dp"
+      android:layout_height="28dp"
+      android:src="@drawable/ic_cpu"
+      app:tint="@color/pd_details" />
+
+    <TextView
+      android:id="@+id/tv_title_cpu"
+      style="@style/pd_details"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Exynos 990" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+      android:layout_width="28dp"
+      android:layout_height="28dp"
+      android:src="@drawable/ic_cam"
+      app:tint="@color/pd_details" />
+
+    <TextView
+      android:id="@+id/tv_title_cam"
+      style="@style/pd_details"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="108 x 12 mp" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_ram"
+      app:tint="@color/pd_details" />
+
+    <TextView
+      android:id="@+id/tv_title_ram"
+      style="@style/pd_details"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="108 x 12 mp" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_sd_card"
+      app:tint="@color/pd_details" />
+
+    <TextView
+      android:id="@+id/tv_title_memory"
+      style="@style/pd_details"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="256gb" />
+
+  </LinearLayout>
+</LinearLayout>

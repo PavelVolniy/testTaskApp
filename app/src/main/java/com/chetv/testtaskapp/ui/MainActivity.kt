@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.databinding.ActivityMainBinding
 import com.chetv.testtaskapp.ui.main.MainFragment
+import dagger.Provides
 
 
 class MainActivity : AppCompatActivity() {

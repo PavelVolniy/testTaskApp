@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="items">Samsung</string-array>
+  <string-array name="city_names">
+    <item>Moscow</item>
+    <item>Saint Petersburg</item>
+    <item>Ryazan</item>
+    <item>Rostov on Don</item>
+    <item>Krasnodar</item>
+    <item>Lipetsk</item>
+  </string-array>
+
+  <string-array name="brand_names">
+    <item>Samsung</item>
+    <item>Iphone</item>
+  </string-array>
+
+  <string-array name="range_prices">
+    <item>$100 - 500</item>
+    <item>$500 - 1500</item>
+    <item>$1500 - 3000</item>
+  </string-array>
+
+  <string-array name="range_size">
+    <item>120</item>
+    <item>100</item>
+    <item>80</item>
+  </string-array>
 </resources>

@@ -1,4 +1,4 @@
-package com.chetv.testtaskapp.data.mockyjson
+package com.chetv.testtaskapp.data.mainscreenjson
 
 import com.google.gson.annotations.SerializedName
 

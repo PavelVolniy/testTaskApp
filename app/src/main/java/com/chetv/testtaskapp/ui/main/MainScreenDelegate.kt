@@ -1,45 +1,29 @@
 package com.chetv.testtaskapp.ui.main
 
 import android.app.Activity
-import android.app.DownloadManager.Request
-import android.graphics.Bitmap
-import android.graphics.BlurMaskFilter.Blur
+import android.content.Context
 import android.graphics.Color
-import android.view.RoundedCorner
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.MultiTransformation
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.bumptech.glide.request.RequestOptions
-import com.chetv.testtaskapp.data.mockyjson.BestSeller
-import com.chetv.testtaskapp.data.mockyjson.HomeStore
+import com.chetv.testtaskapp.data.mainscreenjson.BestSeller
+import com.chetv.testtaskapp.data.mainscreenjson.HomeStore
 import com.chetv.testtaskapp.databinding.*
-import com.chetv.testtaskapp.model.base.ListItem
+import com.chetv.testtaskapp.model.base.MainScreenListItem
 import com.chetv.testtaskapp.model.test.BestSellerList
 import com.chetv.testtaskapp.model.test.SelectCategoryItem
 import com.chetv.testtaskapp.model.test.SelectCategoryList
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import jp.wasabeef.glide.transformations.BlurTransformation
-import jp.wasabeef.glide.transformations.ColorFilterTransformation
-import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation
-import jp.wasabeef.glide.transformations.CropSquareTransformation
-import jp.wasabeef.glide.transformations.CropTransformation
-import jp.wasabeef.glide.transformations.GrayscaleTransformation
-import jp.wasabeef.glide.transformations.MaskTransformation
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation
-import jp.wasabeef.glide.transformations.gpu.ToonFilterTransformation
-import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation
-import kotlinx.coroutines.withContext
-import java.util.TooManyListenersException
 
 object MainScreenDelegate {
 
   fun bestSellerDelegate() =
-    adapterDelegateViewBinding<BestSellerList, ListItem, BestSellerHorizontalListBinding>(
+    adapterDelegateViewBinding<BestSellerList, MainScreenListItem, BestSellerHorizontalListBinding>(
       { inflater, container ->
         BestSellerHorizontalListBinding.inflate(inflater, container, false).apply {
           recyclerView.adapter = ListDelegationAdapter(bestSellerItemAdapter())
@@ -47,13 +31,14 @@ object MainScreenDelegate {
       }
     ) {
       bind {
+        binding.title = item.title
         binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
         (binding.recyclerView.adapter as ListDelegationAdapter<*>).items = item.json
       }
     }
 
   private fun bestSellerItemAdapter() =
-    adapterDelegateViewBinding<BestSeller, ListItem, BestSellerItemBinding>(
+    adapterDelegateViewBinding<BestSeller, MainScreenListItem, BestSellerItemBinding>(
       { inflater, container ->
         BestSellerItemBinding.inflate(inflater, container, false)
       }
@@ -77,7 +62,7 @@ object MainScreenDelegate {
 
 
   fun hotSalesHorizontalDelegate() =
-    adapterDelegateViewBinding<com.chetv.testtaskapp.model.test.HotSalesList, ListItem, HotSalesHorizontalListBinding>(
+    adapterDelegateViewBinding<com.chetv.testtaskapp.model.test.HotSalesList, MainScreenListItem, HotSalesHorizontalListBinding>(
       { inflater, container ->
         HotSalesHorizontalListBinding.inflate(inflater, container, false).apply {
           //on create ViewHolder
@@ -87,6 +72,7 @@ object MainScreenDelegate {
     ) {
       //on bind ViewHolder
       bind {
+        binding.title = item.title
         (binding.recyclerView.adapter as ListDelegationAdapter<*>).apply {
           binding.tvSeeMore.setOnClickListener {
             Toast.makeText(context, "see more is clicked ", Toast.LENGTH_SHORT).show()
@@ -99,7 +85,7 @@ object MainScreenDelegate {
 
 
   private fun hotSalesItemAdapterDelegate() =
-    adapterDelegateViewBinding<HomeStore, ListItem, HotSalesItemBinding>(
+    adapterDelegateViewBinding<HomeStore, MainScreenListItem, HotSalesItemBinding>(
       { inflater, container -> HotSalesItemBinding.inflate(inflater, container, false) }
     ) {
       bind {
@@ -130,7 +116,7 @@ object MainScreenDelegate {
     }
 
   fun selectCategoryDelegate() =
-    adapterDelegateViewBinding<SelectCategoryList, ListItem, SelectCategoryHorizontalListBinding>(
+    adapterDelegateViewBinding<SelectCategoryList, MainScreenListItem, SelectCategoryHorizontalListBinding>(
       { inflater, container ->
         SelectCategoryHorizontalListBinding.inflate(
           inflater,
@@ -143,11 +129,22 @@ object MainScreenDelegate {
     ) {
       bind {
         (binding.recyclerView.adapter as ListDelegationAdapter<*>).items = item.listCategory
+        binding.ibSearchButton.setOnClickListener {
+          Toast.makeText(context, "Search text - ${binding.etFindField.text}", Toast.LENGTH_SHORT)
+            .show()
+          binding.etFindField.text.clear()
+          itemView.hideKeyboard()
+        }
       }
     }
 
+  private fun View.hideKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(windowToken, 0)
+  }
+
   private fun selectCategoryAdapter() =
-    adapterDelegateViewBinding<SelectCategoryItem, ListItem, SelectCategoryItemBinding>(
+    adapterDelegateViewBinding<SelectCategoryItem, MainScreenListItem, SelectCategoryItemBinding>(
       { inflater, container ->
         SelectCategoryItemBinding.inflate(inflater, container, false)
       }

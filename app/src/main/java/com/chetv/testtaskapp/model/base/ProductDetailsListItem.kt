@@ -1,5 +1,5 @@
 package com.chetv.testtaskapp.model.base
 
-interface ListItem{
+interface ProductDetailsListItem {
   val itemID: Long
 }

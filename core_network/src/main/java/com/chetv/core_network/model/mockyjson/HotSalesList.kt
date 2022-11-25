@@ -1,4 +1,4 @@
-package com.chetv.testtaskapp.data.mockyjson
+package com.chetv.testtaskapp.data.mainscreenjson
 
 
 data class HotSalesList(

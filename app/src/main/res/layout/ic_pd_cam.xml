@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:gravity="center"
+  android:orientation="vertical">
+
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_cam"
+    app:tint="@color/pd_details" />
+
+  <TextView
+    android:id="@+id/tv_title_cam"
+    style="@style/pd_details"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="108 x 12 mp" />
+</LinearLayout>
