@@ -1,19 +1,12 @@
 package com.chetv.testtaskapp.ui.prodactdetails
 
-import android.graphics.drawable.Drawable
 import android.widget.CheckBox
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.data.productdetailsjson.*
-import com.chetv.testtaskapp.databinding.PdColorCapacityItemBinding
-import com.chetv.testtaskapp.databinding.PdDetailsItemBinding
-import com.chetv.testtaskapp.databinding.PdDetailsVerticalBinding
-import com.chetv.testtaskapp.databinding.PdImageItemBinding
-import com.chetv.testtaskapp.databinding.PdImageListHorizontalBinding
-import com.chetv.testtaskapp.databinding.PdTabBarItemBinding
-import com.chetv.testtaskapp.databinding.PdTitleItemBinding
+import com.chetv.testtaskapp.databinding.*
 import com.chetv.testtaskapp.model.base.ProductDetailsListItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
@@ -82,8 +75,8 @@ object ProductDetailsDelegate {
 
   private fun productDetailsParams() =
     adapterDelegateViewBinding<DetailsParamsItem, ProductDetailsListItem, PdDetailsItemBinding>(
-      {inflater,container-> PdDetailsItemBinding.inflate(inflater,container,false)}
-    ){
+      { inflater, container -> PdDetailsItemBinding.inflate(inflater, container, false) }
+    ) {
       bind {
         binding.tvTitleCam.text = item.camera
         binding.tvTitleCpu.text = item.cpu
@@ -94,20 +87,21 @@ object ProductDetailsDelegate {
 
   private fun productDelegatesColorCapacityAdapter() =
     adapterDelegateViewBinding<CapacityColorPriceItem, ProductDetailsListItem, PdColorCapacityItemBinding>(
-      {inflater, container-> PdColorCapacityItemBinding.inflate(inflater,container,false)}
-    ){
-      bind{
-        for (i in item.color){
+      { inflater, container -> PdColorCapacityItemBinding.inflate(inflater, container, false) }
+    ) {
+      bind {
+        for (i in item.color) {
           val checkBox = CheckBox(context)
           checkBox.setBackgroundColor(i)
           checkBox.setButtonDrawable(R.drawable.pd_selector_color)
           binding.rgSelectColor.addView(checkBox)
         }
-        for (j in item.capacity){
+        for (j in item.capacity) {
           val textBt = TextView(context)
           textBt.text = j
           binding.rgSelectColor.addView(textBt)
         }
+        binding.tvPriceOnButton.text = item.price
       }
     }
 }
