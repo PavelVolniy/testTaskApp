@@ -94,5 +94,8 @@ dependencies {
   implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.2'
   implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:4.3.2'
 
-  implementation project(':core_network')// TODO remove
+  implementation project(':core_network')
+
+  //carouselRecyclerview
+  implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
 }

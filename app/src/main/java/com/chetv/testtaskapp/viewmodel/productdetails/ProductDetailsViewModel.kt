@@ -1,10 +1,14 @@
 package com.chetv.testtaskapp.viewmodel.productdetails
 
+import android.graphics.Color
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.chetv.core_network.api.MockyApi
-import com.chetv.testtaskapp.data.productdetailsjson.ItemJsonMocky
+import com.chetv.testtaskapp.data.productdetailsjson.*
+import com.chetv.testtaskapp.model.base.ProductDetailsListItem
 import com.chetv.testtaskapp.viewmodel.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,19 +17,46 @@ class ProductDetailsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
 
-  private val _data = MutableLiveData<List<ItemJsonMocky>>()
-  val data: MutableLiveData<List<ItemJsonMocky>> = _data
+  private val _data = MutableLiveData<List<ProductDetailsListItem>>()
+  val data: MutableLiveData<List<ProductDetailsListItem>> = _data
 
   init {
-    viewModelScope.launch {
-      getItems()
+    viewModelScope.launch(Dispatchers.IO) {
+      val data = getItems()
+      _data.postValue(data)
     }
   }
 
-  private suspend fun getItems() {
+  private suspend fun getItems(): List<ProductDetailsListItem> {
 
-    api.mainScreenData()
+    val data = api.productDetailsData()
+    val listImages = ListImages(data.images.map { ImagesItem(it) })
 
+    return listOf(
+      listImages,
+      ListItemDetails(
+        listOf(
+          DetailsTitleItem(
+            title = data.title,
+            rating = data.rating,
+            isFavorites = data.isFavorites
+          ),
+          DetailsParamsItem(
+            cpu = data.CPU,
+            camera = data.camera,
+            sd = data.sd,
+            ssd = data.ssd
+          ),
+          CapacityColorPriceItem(
+            capacity = data.capacity,
+            color = listOf(Color.GREEN, Color.RED),
+            price = data.price.toString()
+          )
+        )
+      )
+
+    )
   }
+
 
 }

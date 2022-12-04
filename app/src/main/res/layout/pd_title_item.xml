@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+  android:layout_height="wrap_content">
 
   <TextView
     android:id="@+id/tv_name_item_pd"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="38dp"
-    android:layout_marginTop="28dp"
+    android:layout_marginTop="10dp"
     android:text="Galaxy Note 20 Ultra"
     android:textColor="@color/colorPrimary"
     android:textSize="24sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <ImageView
+  <CheckBox
     android:id="@+id/iv_is_favorites"
     android:layout_width="37dp"
     android:layout_height="33dp"
@@ -24,10 +24,12 @@
     android:background="@drawable/bg_rectangle_10dp_radius"
     android:backgroundTint="@color/colorPrimary"
     android:padding="8dp"
-    android:src="@drawable/ic_like_bottom_bar"
+    android:checked="false"
+    android:clickable="false"
+    android:button="@drawable/pd_selector_like"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="@id/tv_name_item_pd"
-    app:tint="@color/baseWhite" />
+    />
 
   <RatingBar
     android:id="@+id/rb_rating"
@@ -38,7 +40,35 @@
     android:isIndicator="false"
     android:numStars="5"
     android:progressTint="@color/rating_bar"
-    android:rating="3"
     app:layout_constraintStart_toStartOf="@+id/tv_name_item_pd"
     app:layout_constraintTop_toBottomOf="@+id/tv_name_item_pd" />
+
+  <com.google.android.material.tabs.TabLayout
+    android:id="@+id/tb_tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/baseWhite"
+    app:layout_constraintTop_toBottomOf="@+id/rb_rating"
+    app:tabIndicatorColor="@color/colorAccent"
+    app:tabMode="fixed"
+    app:tabSelectedTextColor="@color/colorPrimary"
+    app:tabTextColor="@color/pd_tab_color"
+    app:tabTextAppearance="@style/myBodySmall_v1">
+
+    <com.google.android.material.tabs.TabItem
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Shop" />
+
+    <com.google.android.material.tabs.TabItem
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Details" />
+
+    <com.google.android.material.tabs.TabItem
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Features" />
+  </com.google.android.material.tabs.TabLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

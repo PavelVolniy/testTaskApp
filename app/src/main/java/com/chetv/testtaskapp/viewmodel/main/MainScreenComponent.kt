@@ -42,7 +42,6 @@ interface MainScreenComponent {
 
 @Module
 abstract class MainScreenModule {
-
   @Binds
   @IntoMap
   @ViewModelKey(MainScreenViewModel::class)

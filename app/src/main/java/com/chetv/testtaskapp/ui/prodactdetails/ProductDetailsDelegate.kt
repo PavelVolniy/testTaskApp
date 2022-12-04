@@ -1,10 +1,10 @@
 package com.chetv.testtaskapp.ui.prodactdetails
 
-import android.widget.CheckBox
+import android.app.Activity
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.chetv.testtaskapp.R
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.chetv.testtaskapp.data.productdetailsjson.*
 import com.chetv.testtaskapp.databinding.*
 import com.chetv.testtaskapp.model.base.ProductDetailsListItem
@@ -20,7 +20,20 @@ object ProductDetailsDelegate {
           recyclerView.adapter = ListDelegationAdapter(productDetailsImageAdapter())
         }
       }
-    ) {}
+    ) {
+      binding.recyclerView.apply {
+        set3DItem(false)
+        setAlpha(true)
+        setInfinite(true)
+        setIntervalRatio(0.81f)
+      }
+      bind {
+        (binding.recyclerView.adapter as ListDelegationAdapter<*>).apply {
+          items = item.list
+        }
+
+      }
+    }
 
   private fun productDetailsImageAdapter() =
     adapterDelegateViewBinding<ImagesItem, ProductDetailsListItem, PdImageItemBinding>(
@@ -30,27 +43,34 @@ object ProductDetailsDelegate {
     ) {
       bind {
         Glide.with(binding.root)
-          .load(item)
-          .optionalCenterCrop()
-          .transition(DrawableTransitionOptions.withCrossFade())
+          .load(item.image)
+          .transition(withCrossFade())
           .into(binding.ivPdImage)
+      }
+      onViewRecycled {
+        if ((binding.root.context as? Activity)?.isDestroyed?.not() == true) {
+          Glide.with(binding.root).clear(binding.ivPdImage)
+        }
       }
     }
 
   fun productDetailsDelegate() =
-    adapterDelegateViewBinding<ItemJsonMocky, ProductDetailsListItem, PdDetailsVerticalBinding>(
+    adapterDelegateViewBinding<ListItemDetails, ProductDetailsListItem, PdDetailsVerticalBinding>(
       { inflater, container ->
         PdDetailsVerticalBinding.inflate(inflater, container, false).apply {
           recyclerView.adapter = ListDelegationAdapter(
             productDetailsTitleItem(),
-            productDetailsTabBarItem(),
             productDetailsParams(),
             productDelegatesColorCapacityAdapter()
           )
         }
       }
     ) {
-
+      bind {
+        (binding.recyclerView.adapter as ListDelegationAdapter<*>).apply {
+          items = item.list
+        }
+      }
     }
 
   private fun productDetailsTitleItem() =
@@ -60,18 +80,9 @@ object ProductDetailsDelegate {
       bind {
         binding.tvNameItemPd.text = item.title
         binding.rbRating.rating = item.rating
-        if (item.isFavorites) {
-          binding.ivIsFavorites.setImageResource(R.drawable.ic_like_best_seller_enabled)
-        } else {
-          binding.ivIsFavorites.setImageResource(R.drawable.ic_like_best_seller_disabled)
-        }
+        binding.ivIsFavorites.isChecked = item.isFavorites
       }
     }
-
-  private fun productDetailsTabBarItem() =
-    adapterDelegateViewBinding<TabBarItem, ProductDetailsListItem, PdTabBarItemBinding>(
-      { inflater, container -> PdTabBarItemBinding.inflate(inflater, container, false) }
-    ) {}
 
   private fun productDetailsParams() =
     adapterDelegateViewBinding<DetailsParamsItem, ProductDetailsListItem, PdDetailsItemBinding>(
@@ -90,18 +101,18 @@ object ProductDetailsDelegate {
       { inflater, container -> PdColorCapacityItemBinding.inflate(inflater, container, false) }
     ) {
       bind {
-        for (i in item.color) {
-          val checkBox = CheckBox(context)
-          checkBox.setBackgroundColor(i)
-          checkBox.setButtonDrawable(R.drawable.pd_selector_color)
-          binding.rgSelectColor.addView(checkBox)
-        }
+//        for (i in item.color) {
+//          val checkBox = CheckBox(context)
+//          checkBox.setButtonDrawable(R.drawable.pd_selector_color)
+//          binding.rgSelectColor.addView(checkBox)
+//        }
         for (j in item.capacity) {
           val textBt = TextView(context)
           textBt.text = j
           binding.rgSelectColor.addView(textBt)
         }
         binding.tvPriceOnButton.text = item.price
+
       }
     }
 }

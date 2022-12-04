@@ -19,17 +19,19 @@
     android:id="@+id/ll_details_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="13dp"
     app:layout_constraintTop_toBottomOf="@id/tv_select_color_capacity">
 
     <RadioGroup
       android:id="@+id/rg_select_color"
-      android:layout_width="match_parent"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:orientation="horizontal"
-      >
+      android:layout_weight="1"
+      android:gravity="start"
+      android:orientation="horizontal">
 
-      <CheckBox
+      <RadioButton
         android:id="@+id/rb_color1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,9 +39,11 @@
         android:background="@drawable/bg_oval_33dp"
         android:backgroundTint="@color/colorAccent"
         android:button="@drawable/pd_selector_color"
-        android:buttonTint="@color/baseWhite" />
+        android:buttonTint="@color/baseWhite"
+        android:checked="true"
+        android:foregroundTintMode="screen" />
 
-      <CheckBox
+      <RadioButton
         android:id="@+id/rb_color2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,39 +53,58 @@
         android:button="@drawable/pd_selector_color"
         android:buttonTint="@color/baseWhite" />
 
-      <TextView
-        android:layout_gravity="center"
+    </RadioGroup>
+
+    <RadioGroup
+      android:id="@+id/rg_selector_sd"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_weight="2"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton
+        android:id="@+id/rb_sd_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:background="@drawable/bg_rectangle_10dp_radius"
-        android:backgroundTint="@color/colorAccent"
+        android:layout_margin="5dp"
+        android:background="@drawable/pd_selector_background_sd"
+        android:button="@null"
+        android:fontFamily="@font/mark_pro_bolt"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
+        android:text="256gb"
+        android:checked="true"
+        android:textColor="@color/pd_selector_text_sd"
+        android:textSize="13sp" />
+
+      <RadioButton
+        android:id="@+id/rb_sd_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/pd_selector_background_sd"
+        android:button="@null"
+        android:fontFamily="@font/mark_pro_bolt"
         android:paddingStart="15dp"
         android:paddingTop="8dp"
         android:paddingEnd="15dp"
         android:paddingBottom="8dp"
         android:text="128gb"
-        android:textColor="@color/baseWhite" />
-
-      <TextView
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/bg_rectangle_10dp_radius"
-        android:backgroundTint="@color/baseWhite"
-        android:paddingStart="15dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="8dp"
-        android:text="128gb" />
+        android:textColor="@color/pd_selector_text_sd"
+        android:textSize="13sp" />
 
     </RadioGroup>
+
   </LinearLayout>
 
   <LinearLayout
     android:layout_width="0dp"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:background="@drawable/bg_rectangle_10dp_radius"
     android:backgroundTint="@color/colorAccent"
     android:paddingStart="45dp"

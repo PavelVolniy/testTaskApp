@@ -7,9 +7,12 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.data.mainscreenjson.BestSeller
 import com.chetv.testtaskapp.data.mainscreenjson.HomeStore
 import com.chetv.testtaskapp.databinding.*
@@ -17,6 +20,7 @@ import com.chetv.testtaskapp.model.base.MainScreenListItem
 import com.chetv.testtaskapp.model.test.BestSellerList
 import com.chetv.testtaskapp.model.test.SelectCategoryItem
 import com.chetv.testtaskapp.model.test.SelectCategoryList
+import com.chetv.testtaskapp.ui.prodactdetails.ProductDetailsFragment
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
@@ -51,6 +55,12 @@ object MainScreenDelegate {
         binding.tvNameBestSellerItem.text = item.title
         binding.tvPriceWithoutSale.text = "$${item.price_without_discount}"
         binding.tvPriceWithSale.text = "$${item.discount_price}"
+        binding.ivBestSellerImItem.setOnClickListener {
+          (context as FragmentActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.container, ProductDetailsFragment())
+            .addToBackStack(null)
+            .commit()
+        }
         binding.executePendingBindings()
       }
       onViewRecycled {
@@ -67,9 +77,11 @@ object MainScreenDelegate {
         HotSalesHorizontalListBinding.inflate(inflater, container, false).apply {
           //on create ViewHolder
           recyclerView.adapter = ListDelegationAdapter(hotSalesItemAdapterDelegate())
+
         }
       }
     ) {
+
       //on bind ViewHolder
       bind {
         binding.title = item.title

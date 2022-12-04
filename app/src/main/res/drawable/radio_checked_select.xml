@@ -1,0 +1,9 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+  >
+  <item>
+    <inset android:drawable="@drawable/radio_checked" android:visible="true"
+      android:insetTop="1dp"
+      android:insetLeft="8dp">
+    </inset>
+  </item>
+</selector>
