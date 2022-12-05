@@ -1,6 +1,6 @@
 package com.chetv.core_network.model.productdetails
 
-data class JsonProductDetailsFromeServer(
+data class JsonProductDetailsFromServer(
     val CPU: String,
     val camera: String,
     val capacity: List<String>,

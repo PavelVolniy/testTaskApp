@@ -21,8 +21,6 @@ class MainScreenViewModel @Inject constructor(
   private val api: MockyApi
 ) : BaseViewModel() {
 
-//  private val api = NetworkComponent.createApi()
-
   private val _data = MutableLiveData<List<MainScreenListItem>>()
   val data: MutableLiveData<List<MainScreenListItem>> = _data
 
@@ -35,9 +33,7 @@ class MainScreenViewModel @Inject constructor(
 
 
   private suspend fun getItems(): List<MainScreenListItem> {
-    val jsonMainScreen = mappingData(api.mainScreenData())
-    //test data
-//    delay(2000L)
+    val data = api.mainScreenData()
     return listOf(
       SelectCategoryList(
         listOf(
@@ -48,38 +44,24 @@ class MainScreenViewModel @Inject constructor(
           SelectCategoryItem(4, false, "Settings", R.drawable.ic_sc_settings)
         )
       ),
-      HotSalesList(jsonMainScreen.home_store, resources.string(R.string.hot_sales)),
-      BestSellerList(jsonMainScreen.best_seller, resources.string(R.string.best_seller))
-    )
-  }
-
-  private fun mappingData(jsonMainScreenFromServer: JsonMainScreenFromServer): JsonMainScreen {
-    val listBestSeller = mutableListOf<BestSeller>()
-    for (i in jsonMainScreenFromServer.bestSeller) {
-      listBestSeller.add(
+      HotSalesList(data.hotSales.map { HomeStore(
+        id = it.id,
+        is_buy = it.is_buy,
+        is_new = it.is_new,
+        picture = it.picture,
+        subtitle = it.subtitle,
+        title = it.title
+      ) }, resources.string(R.string.hot_sales)),
+      BestSellerList(data.bestSeller.map {
         BestSeller(
-          i.id,
-          i.is_favorites,
-          i.title,
-          i.price_without_discount,
-          i.discount_price,
-          i.picture
+          id = it.id,
+          is_favorites = it.is_favorites,
+          title = it.title,
+          price_without_discount = it.price_without_discount,
+          discount_price = it.discount_price,
+          picture = it.picture
         )
-      )
-    }
-    val listHotSales = mutableListOf<HomeStore>()
-    for (i in jsonMainScreenFromServer.hotSales) {
-      listHotSales.add(
-        HomeStore(
-          i.id,
-          i.is_buy,
-          i.is_new,
-          i.picture,
-          i.subtitle,
-          i.title
-        )
-      )
-    }
-    return JsonMainScreen(listBestSeller, listHotSales)
+      }, resources.string(R.string.best_seller))
+    )
   }
 }

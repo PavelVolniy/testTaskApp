@@ -22,4 +22,5 @@
   <color name="pd_selector_ram_disabled">#8D8D8D</color>
   <color name="pd_tab_color">#8D8D8D</color>
   <color name="pd_selector_ram_enabled">#FFFAFAFA</color>
+  <color name="bg_mc_count_items">#282843</color>
 </resources>

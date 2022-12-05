@@ -1,4 +1,4 @@
-package com.chetv.testtaskapp
+package com.chetv.testtaskapp.viewmodel
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.ui.MainActivity
 
 @Suppress("DEPRECATION")

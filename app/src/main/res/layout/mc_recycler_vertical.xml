@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:background="@drawable/bg_rectangle_30dp_radius"
+  android:backgroundTint="@color/colorPrimary"
+  android:padding="5dp"
+  android:layout_height="match_parent">
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView_items"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="4"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:listitem="@layout/mc_item" />
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <View
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_width="match_parent"
+      android:background="#40FFFFFF"
+      android:layout_height="1dp"/>
+
+    <TextView
+      android:id="@+id/tv_total_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="55dp"
+      android:layout_marginTop="15dp"
+      android:fontFamily="@font/markpro_regular"
+      android:text="Total"
+      android:textColor="@color/baseWhite"
+      android:textSize="15sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tv_delivery_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:fontFamily="@font/markpro_regular"
+      android:text="Delivery"
+      android:textColor="@color/baseWhite"
+      android:textSize="15sp"
+      app:layout_constraintStart_toStartOf="@id/tv_total_title"
+      app:layout_constraintTop_toBottomOf="@+id/tv_total_title" />
+
+    <View
+      app:layout_constraintBottom_toTopOf="@+id/tv_checkout"
+      android:layout_marginBottom="27dp"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="#33FFFFFF"/>
+
+    <TextView
+      android:id="@+id/tv_total"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="35dp"
+      android:fontFamily="@font/mark_pro_bolt"
+      android:text="$6.000 us"
+      android:textColor="@color/baseWhite"
+      android:textSize="15sp"
+      app:layout_constraintBottom_toBottomOf="@id/tv_total_title"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+      android:id="@+id/tv_delivery"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/mark_pro_bolt"
+      android:text="Free"
+      android:textColor="@color/baseWhite"
+      android:textSize="15sp"
+      app:layout_constraintBottom_toBottomOf="@id/tv_delivery_title"
+      app:layout_constraintStart_toStartOf="@id/tv_total" />
+
+    <TextView
+      android:id="@+id/tv_checkout"
+      android:layout_width="300dp"
+      android:layout_height="45dp"
+      android:layout_marginBottom="25dp"
+      android:background="@drawable/bg_rectangle_10dp_radius"
+      android:backgroundTint="@color/colorAccent"
+      android:fontFamily="@font/mark_pro_bolt"
+      android:gravity="center"
+      android:text="Checkout"
+      android:textColor="@color/baseWhite"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

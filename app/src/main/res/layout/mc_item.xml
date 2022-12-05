@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal"
+  android:padding="20dp">
+
+  <ImageView
+    android:id="@+id/iv_mc_image_item"
+    android:layout_width="88dp"
+    android:layout_height="88dp"
+    android:scaleType="fitXY" />
+
+  <FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="88dp"
+    android:layout_weight="3"
+    android:paddingStart="10dp">
+
+    <TextView
+      android:id="@+id/tv_mc_title_item"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top|start"
+      android:fontFamily="@font/markpro_medium"
+      android:text="Galaxy Note 20 Ultra"
+      android:textColor="@color/baseWhite"
+      android:textSize="20sp" />
+
+    <TextView
+      android:id="@+id/tv_mc_price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|start"
+      android:text="$3000.0"
+      android:textColor="@color/colorAccent"
+      android:textSize="20sp" />
+  </FrameLayout>
+
+  <FrameLayout
+    android:layout_width="26dp"
+    android:layout_height="80dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_rectangle_26dp_radius"
+    android:backgroundTint="@color/bg_mc_count_items">
+
+    <ImageButton
+      android:id="@+id/ib_mc_minus"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top"
+      android:backgroundTint="@color/bg_mc_count_items"
+      android:src="@drawable/ic_mc_minus"
+      app:tint="@color/baseWhite" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginBottom="2dp"
+      android:fontFamily="@font/markpro_medium"
+      android:text="2"
+      android:textColor="@color/baseWhite"
+      android:textSize="20sp" />
+
+    <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      android:backgroundTint="@color/bg_mc_count_items"
+      android:src="@drawable/ic_mc_plus"
+      app:tint="@color/baseWhite" />
+  </FrameLayout>
+
+  <ImageButton
+    android:layout_width="15dp"
+    android:layout_height="15dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="10dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:src="@drawable/ic_mc_delete_basket"
+    app:tint="@color/bg_mc_count_items" />
+</LinearLayout>

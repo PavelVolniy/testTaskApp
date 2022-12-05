@@ -3,13 +3,16 @@ package com.chetv.testtaskapp.ui.main
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.chetv.testtaskapp.R
@@ -21,6 +24,7 @@ import com.chetv.testtaskapp.model.test.BestSellerList
 import com.chetv.testtaskapp.model.test.SelectCategoryItem
 import com.chetv.testtaskapp.model.test.SelectCategoryList
 import com.chetv.testtaskapp.ui.prodactdetails.ProductDetailsFragment
+import com.google.android.material.tabs.TabItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
@@ -31,6 +35,8 @@ object MainScreenDelegate {
       { inflater, container ->
         BestSellerHorizontalListBinding.inflate(inflater, container, false).apply {
           recyclerView.adapter = ListDelegationAdapter(bestSellerItemAdapter())
+
+
         }
       }
     ) {
@@ -77,11 +83,10 @@ object MainScreenDelegate {
         HotSalesHorizontalListBinding.inflate(inflater, container, false).apply {
           //on create ViewHolder
           recyclerView.adapter = ListDelegationAdapter(hotSalesItemAdapterDelegate())
-
+          LinearSnapHelper().attachToRecyclerView(recyclerView)
         }
       }
     ) {
-
       //on bind ViewHolder
       bind {
         binding.title = item.title
@@ -134,13 +139,19 @@ object MainScreenDelegate {
           inflater,
           container,
           false
-        ).apply {
-          recyclerView.adapter = ListDelegationAdapter(selectCategoryAdapter())
-        }
+        )
       }
     ) {
       bind {
-        (binding.recyclerView.adapter as ListDelegationAdapter<*>).items = item.listCategory
+        item.listCategory.map {
+          binding.recyclerView.addTab(
+            binding.recyclerView.newTab()
+              .setText(it.nameCategory)
+              .setIcon(it.icon)
+              .setId(it.id.toInt())
+          )
+        }
+//        (binding.recyclerView.adapter as ListDelegationAdapter<*>).items = item.listCategory
         binding.ibSearchButton.setOnClickListener {
           Toast.makeText(context, "Search text - ${binding.etFindField.text}", Toast.LENGTH_SHORT)
             .show()
