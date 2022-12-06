@@ -1,6 +1,7 @@
 package com.chetv.testtaskapp.ui.mycard
 
 import android.app.Activity
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
@@ -11,7 +12,6 @@ import com.chetv.testtaskapp.databinding.McRecyclerVerticalBinding
 import com.chetv.testtaskapp.model.base.MyCardListItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import jp.wasabeef.glide.transformations.CropCircleTransformation
 
 object MyCardDelegate {
 
@@ -29,6 +29,13 @@ object MyCardDelegate {
         }
         binding.tvTotal.text = "$${item.total} us"
         binding.tvDelivery.text = item.delivery
+        binding.tvCheckout.setOnClickListener {
+          Toast.makeText(
+            context,
+            "Clicked the ${binding.tvCheckout.text}",
+            Toast.LENGTH_SHORT
+          ).show()
+        }
       }
     }
 

@@ -11,4 +11,7 @@
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="my_card_title">My Card</string>
+  <string name="mc_add_address_title">Add address</string>
+  <string name="mc_test_price_text">$6.000 us</string>
+  <string name="mc_checkout_button_text">Checkout</string>
 </resources>

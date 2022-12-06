@@ -3,6 +3,7 @@ package com.chetv.testtaskapp.ui.prodactdetails
 import android.app.Activity
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.chetv.testtaskapp.data.productdetailsjson.*
 import com.chetv.testtaskapp.databinding.*
@@ -44,6 +45,7 @@ object ProductDetailsDelegate {
       bind {
         Glide.with(binding.root)
           .load(item.image)
+          .transform(RoundedCorners(20))
           .transition(withCrossFade())
           .into(binding.ivPdImage)
       }

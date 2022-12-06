@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.data.mainscreenjson.BestSeller
@@ -51,6 +52,7 @@ object MainScreenDelegate {
       bind {
         Glide.with(binding.root)
           .load(item.picture)
+          .transform(RoundedCorners(20))
           .transition(withCrossFade())
           .into(binding.ivBestSellerImItem)
         binding.tvNameBestSellerItem.text = item.title

@@ -19,11 +19,14 @@
     android:paddingEnd="11dp">
 
     <ImageView
+      android:padding="10dp"
       android:id="@+id/iv_best_seller_im_item"
       android:layout_width="187dp"
       android:layout_height="168dp"
       android:src="@drawable/im111"
+      android:scaleType="fitXY"
       app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
     
     <View
@@ -33,7 +36,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       android:background="@drawable/bg_like_ring"
-      android:backgroundTint="@color/white"
+      android:backgroundTint="@color/baseWhite"
       android:layout_width="25dp"
       android:layout_height="25dp"/>
 
