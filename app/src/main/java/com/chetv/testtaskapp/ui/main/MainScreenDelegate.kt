@@ -3,13 +3,10 @@ package com.chetv.testtaskapp.ui.main
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -21,10 +18,8 @@ import com.chetv.testtaskapp.data.mainscreenjson.HomeStore
 import com.chetv.testtaskapp.databinding.*
 import com.chetv.testtaskapp.model.base.MainScreenListItem
 import com.chetv.testtaskapp.model.test.BestSellerList
-import com.chetv.testtaskapp.model.test.SelectCategoryItem
 import com.chetv.testtaskapp.model.test.SelectCategoryList
 import com.chetv.testtaskapp.ui.prodactdetails.ProductDetailsFragment
-import com.google.android.material.tabs.TabItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
@@ -64,7 +59,7 @@ object MainScreenDelegate {
         binding.ivBestSellerImItem.setOnClickListener {
           (context as FragmentActivity).supportFragmentManager.beginTransaction()
             .replace(R.id.container, ProductDetailsFragment())
-            .addToBackStack(null)
+            .addToBackStack("MainSc")
             .commit()
         }
         binding.executePendingBindings()
@@ -166,17 +161,17 @@ object MainScreenDelegate {
     imm.hideSoftInputFromWindow(windowToken, 0)
   }
 
-  private fun selectCategoryAdapter() =
-    adapterDelegateViewBinding<SelectCategoryItem, MainScreenListItem, SelectCategoryItemBinding>(
-      { inflater, container ->
-        SelectCategoryItemBinding.inflate(inflater, container, false)
-      }
-    ) {
-      bind {
-        binding.enabled = item.enabled
-        binding.ivIcSelectCategory.setImageResource(item.icon)
-        binding.tvIcSelectCategory.text = item.nameCategory
-        binding.executePendingBindings()
-      }
-    }
+//  private fun selectCategoryAdapter() =
+//    adapterDelegateViewBinding<SelectCategoryItem, MainScreenListItem, SelectCategoryItemBinding>(
+//      { inflater, container ->
+//        SelectCategoryItemBinding.inflate(inflater, container, false)
+//      }
+//    ) {
+//      bind {
+//        binding.enabled = item.enabled
+//        binding.ivIcSelectCategory.setImageResource(item.icon)
+//        binding.tvIcSelectCategory.text = item.nameCategory
+//        binding.executePendingBindings()
+//      }
+//    }
 }

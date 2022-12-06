@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.chetv.testtaskapp.R
 import com.chetv.testtaskapp.databinding.MainFragmentBinding
 import com.chetv.testtaskapp.ui.base.viewBinding
 import com.chetv.testtaskapp.ui.filter.FilterDialog
+import com.chetv.testtaskapp.ui.mycard.MyCardFragment
 import com.chetv.testtaskapp.viewmodel.main.MainScreenComponent
 import com.chetv.testtaskapp.viewmodel.main.MainScreenViewModel
 
@@ -31,12 +32,18 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             R.layout.city_spinner_item
           )
         }
-      viewModel.data.observe(viewLifecycleOwner, Observer {
+      viewModel.data.observe(viewLifecycleOwner) {
         adapter.items = it
         binding.ibFilter.setOnClickListener {
           FilterDialog().show(parentFragmentManager, "CustomFragment")
         }
-      })
+      }
+      binding.ibMsBasket.setOnClickListener {
+        (context as FragmentActivity).supportFragmentManager.beginTransaction()
+          .replace(R.id.container, MyCardFragment())
+          .addToBackStack("MainSc")
+          .commit()
+      }
     }
   }
 }
