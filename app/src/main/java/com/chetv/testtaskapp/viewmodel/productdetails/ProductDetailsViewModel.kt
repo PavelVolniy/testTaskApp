@@ -1,7 +1,5 @@
 package com.chetv.testtaskapp.viewmodel.productdetails
 
-import android.graphics.Color
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.chetv.core_network.api.MockyApi
@@ -49,7 +47,7 @@ class ProductDetailsViewModel @Inject constructor(
           ),
           CapacityColorPriceItem(
             capacity = data.capacity,
-            color = listOf(Color.GREEN, Color.RED),
+            color = data.color,
             price = data.price.toString()
           )
         )

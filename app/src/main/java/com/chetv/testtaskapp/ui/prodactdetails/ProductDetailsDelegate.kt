@@ -1,6 +1,8 @@
 package com.chetv.testtaskapp.ui.prodactdetails
 
 import android.app.Activity
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -103,18 +105,14 @@ object ProductDetailsDelegate {
       { inflater, container -> PdColorCapacityItemBinding.inflate(inflater, container, false) }
     ) {
       bind {
-//        for (i in item.color) {
-//          val checkBox = CheckBox(context)
-//          checkBox.setButtonDrawable(R.drawable.pd_selector_color)
-//          binding.rgSelectColor.addView(checkBox)
-//        }
         for (j in item.capacity) {
           val textBt = TextView(context)
           textBt.text = j
           binding.rgSelectColor.addView(textBt)
         }
         binding.tvPriceOnButton.text = item.price
-
+        binding.rbColor1.backgroundTintList = ColorStateList.valueOf(Color.parseColor(item.color[0]))
+        binding.rbColor2.backgroundTintList = ColorStateList.valueOf(Color.parseColor(item.color[1]))
       }
     }
 }
